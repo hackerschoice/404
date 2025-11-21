@@ -21,7 +21,9 @@ jobs:
         echo "$SSH_DEPLOY_KEY" >~/.ssh/id_ed25519
         chmod 600 ~/.ssh/id_ed25519
         git clone -b gh-pages --single-branch git@github.com:hackerschoice/hackerschoice.github.io.git
-        cp -a site/. hackerschoice.github.io/404/
+        cd hackerschoice.github.io
+        [ ! -d 404 ] && mkdir 404
+        cp -a ../site/. 404/
         is_updated=1
 
         [ -n "$is_updated" ] && {
